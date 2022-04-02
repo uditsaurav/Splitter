@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "421581057651",
+    "project_id": "splitter-dude",
+    "storage_bucket": "splitter-dude.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421581057651:android:13d9fdcbbca055d9200406",
+        "android_client_info": {
+          "package_name": "com.example.splitter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "421581057651-0ca6cnjitjksddadt0nlncpr689dtla9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPQ44L9VB91ARCIgSa07J8Kq05ypUH8Zg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421581057651-0ca6cnjitjksddadt0nlncpr689dtla9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
