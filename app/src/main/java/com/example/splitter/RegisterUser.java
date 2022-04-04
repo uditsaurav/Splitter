@@ -26,7 +26,6 @@ public class RegisterUser extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void registerUser() {
-
         EditText regEmail = findViewById(R.id.registerEmail);
         EditText regPassword1 = findViewById(R.id.registerPassword1);
         EditText regPassword2 = findViewById(R.id.registerPassword2);
@@ -52,7 +51,7 @@ public class RegisterUser extends AppCompatActivity {
                         Map<String, Object> user = new HashMap<>();
                         user.put("email", emailStr);
                         user.put("password", passwordStr);
-                        DbUtils.pushDataToDB(null, user);
+                        DbUtils.pushDataToFireStore(null, user);
                         finish();
                     }
                 }
