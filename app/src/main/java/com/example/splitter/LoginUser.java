@@ -30,20 +30,24 @@ public class LoginUser extends AppCompatActivity {
                 startActivity(new Intent(LoginUser.this, RegisterUser2.class));
             }
         });
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
         document = DbUtils.getDataFromFireStore();
     }
 
     private void loginUser() {
-        EditText email = findViewById(R.id.loginEmail);
-        EditText password = findViewById(R.id.loginPassword);
-        String emailStr = email.getText().toString();
-        String passwordStr = password.getText().toString();
+        EditText etPhone = findViewById(R.id.loginPhone);
+        EditText etPassword = findViewById(R.id.loginPassword);
+        String phone = etPhone.getText().toString();
+        String password = etPassword.getText().toString();
 
         for (String docId : document.keySet()) {
             Map<String, Object> data = document.get(docId);
             if (data != null) {
-                if (Objects.equals(data.get("email"), emailStr) && Objects.equals(data.get("password"), passwordStr)) {
+                if (Objects.equals(data.get("phone"), phone) && Objects.equals(data.get("password"), password)) {
                     startActivity(new Intent(LoginUser.this, MainActivity.class));
                     finish();
                     return;

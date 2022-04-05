@@ -5,16 +5,16 @@
     android:layout_height="match_parent"
     android:layout_margin="15dp"
     android:orientation="vertical"
-    tools:context=".LoginUser">
+    tools:context=".LoginUser"
+    tools:ignore="HardcodedText">
 
     <EditText
-        android:id="@+id/loginEmail"
+        android:id="@+id/loginPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/email"
-        android:importantForAutofill="no"
-        android:inputType="textEmailAddress" />
+        android:hint="Phone No."
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/loginPassword"
@@ -35,6 +35,5 @@
         android:id="@+id/registerLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New User? Click To Register"
-        tools:ignore="HardcodedText" />
+        android:text="New User? Click To Register" />
 </LinearLayout>
