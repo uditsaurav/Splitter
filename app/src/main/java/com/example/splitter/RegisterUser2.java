@@ -25,13 +25,12 @@ import java.util.concurrent.TimeUnit;
 public class RegisterUser2 extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private EditText edtPhone, edtOTP;
-    private Button verifyOTPBtn, generateOTPBtn;
     private String verificationId;
     // callback method is called on Phone auth provider.
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+    private final PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         // below method is used when OTP is sent from Firebase
         @Override
-        public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+        public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
             // when we receive the OTP it contains a unique id which we are storing in our string which we have already created.
             verificationId = s;
@@ -64,8 +63,8 @@ public class RegisterUser2 extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         edtPhone = findViewById(R.id.idEdtPhoneNumber);
         edtOTP = findViewById(R.id.idEdtOtp);
-        verifyOTPBtn = findViewById(R.id.idBtnVerify);
-        generateOTPBtn = findViewById(R.id.idBtnGetOtp);
+        Button verifyOTPBtn = findViewById(R.id.idBtnVerify);
+        Button generateOTPBtn = findViewById(R.id.idBtnGetOtp);
 
         // setting onclick listener for generate OTP button.
         generateOTPBtn.setOnClickListener(new View.OnClickListener() {
@@ -99,15 +98,13 @@ public class RegisterUser2 extends AppCompatActivity {
     private void signInWithCredential(PhoneAuthCredential credential) {
         // inside this method we are checking if the code entered is correct or not.
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(new OnCompleteListener<>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Intent i = new Intent(RegisterUser2.this, MainActivity.class);
+                            Intent i = new Intent(RegisterUser2.this, RegisterUser.class);
                             startActivity(i);
                             finish();
-                        } else {
-                            Toast.makeText(RegisterUser2.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -115,13 +112,12 @@ public class RegisterUser2 extends AppCompatActivity {
 
     private void sendVerificationCode(String number) {
         // this method is used for getting OTP on user phone number.
-        PhoneAuthOptions options =
-                PhoneAuthOptions.newBuilder(mAuth)
-                        .setPhoneNumber(number)         // Phone number to verify
-                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(this)                 // Activity (for callback binding)
-                        .setCallbacks(mCallBack)         // OnVerificationStateChangedCallbacks
-                        .build();
+        PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mAuth)
+                .setPhoneNumber(number)
+                .setTimeout(60L, TimeUnit.SECONDS)
+                .setActivity(this)
+                .setCallbacks(mCallBack)
+                .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
     }
 

@@ -51,7 +51,7 @@ public class RegisterUser extends AppCompatActivity {
                         Map<String, Object> user = new HashMap<>();
                         user.put("email", emailStr);
                         user.put("password", passwordStr);
-                        DbUtils.pushDataToFireStore(null, user);
+                        DbUtils.pushDataToFireStore(emailStr, user);
                         finish();
                     }
                 }

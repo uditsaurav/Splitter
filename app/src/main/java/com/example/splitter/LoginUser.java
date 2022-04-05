@@ -14,6 +14,8 @@ import java.util.Objects;
 
 public class LoginUser extends AppCompatActivity {
 
+    Map<String, Map<String, Object>> document;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,9 +27,11 @@ public class LoginUser extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginUser.this, RegisterUser.class));
+                startActivity(new Intent(LoginUser.this, RegisterUser2.class));
             }
         });
+
+        document = DbUtils.getDataFromFireStore();
     }
 
     private void loginUser() {
@@ -36,7 +40,6 @@ public class LoginUser extends AppCompatActivity {
         String emailStr = email.getText().toString();
         String passwordStr = password.getText().toString();
 
-        Map<String, Map<String, Object>> document = DbUtils.getDataFromFireStore();
         for (String docId : document.keySet()) {
             Map<String, Object> data = document.get(docId);
             if (data != null) {
