@@ -27,7 +27,7 @@ public class LoginUser extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginUser.this, RegisterUser2.class));
+                startActivity(new Intent(LoginUser.this, RegisterUser.class));
             }
         });
     }
@@ -50,7 +50,6 @@ public class LoginUser extends AppCompatActivity {
                 if (Objects.equals(data.get("phone"), phone) && Objects.equals(data.get("password"), password)) {
                     startActivity(new Intent(LoginUser.this, MainActivity.class));
                     finish();
-                    return;
                 }
             }
         }

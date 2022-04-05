@@ -6,7 +6,7 @@
     android:layout_margin="15dp"
     android:orientation="vertical"
     tools:context=".RegisterUser"
-    tools:ignore="HardcodedText">
+    tools:ignore="HardcodedText,TextFields">
 
     <EditText
         android:id="@+id/registerPhone"
@@ -42,7 +42,23 @@
         android:visibility="gone" />
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/idBtnGetOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get OTP"
+        android:textAllCaps="false" />
+
+    <EditText
+        android:id="@+id/idEdtOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter OTP"
+        android:importantForAutofill="no"
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/idBtnVerify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit" />
