@@ -1,6 +1,7 @@
 package com.example.splitter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -20,5 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         TextView tv1 = findViewById(R.id.tv1);
         tv1.setText(sharedPreferences.getString(Constant.PASSWORD, ""));
+        startActivity(new Intent(MainActivity.this, HomeActivity.class));
     }
 }
